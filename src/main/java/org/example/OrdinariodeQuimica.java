@@ -1,5 +1,9 @@
 package org.example;
-
+/*
+Descripción: Proyecto integrador de Química e Introducción a Sistemas Computacionales, desarrollado
+en Java para calcular el potencial de una celda electroquímica.
+Integrantes: Carlos Bautista Garcia, Said Moises, Arturo Rioz.
+ */
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -72,7 +76,6 @@ public class OrdinariodeQuimica {
         agregarElectrodo(electrodos, "Na", "Sodio", -2.714, 1,
                 "Na → Na⁺ + e⁻",
                 "Na⁺ + e⁻ → Na");
-
         // Ciclo principal del programa
         while (true) {
             try {
@@ -83,6 +86,8 @@ public class OrdinariodeQuimica {
                 System.out.println("1. Calcular potencial de celda");
                 System.out.println("2. Salir");
                 System.out.print("Seleccione una opcion: ");
+
+
 
                 String entrada = scanner.nextLine().trim();
 
@@ -171,11 +176,9 @@ public class OrdinariodeQuimica {
 
                                         nombre = elemento.get("nombre");
 
-                                        potencial = Double.parseDouble(
-                                                elemento.get("potencial"));
+                                        potencial = Double.parseDouble(elemento.get("potencial"));
 
-                                        electrones = Integer.parseInt(
-                                                elemento.get("electrones"));
+                                        electrones = Integer.parseInt(elemento.get("electrones"));
 
                                         oxidacion = elemento.get("oxidacion");
                                         reduccion = elemento.get("reduccion");
@@ -207,8 +210,7 @@ public class OrdinariodeQuimica {
                         do {
                             try {
 
-                                System.out.print("Ingrese la concentracion molar de "
-                                        + simbolo + " (M): ");
+                                System.out.print("Ingrese la concentracion molar de " + simbolo + " (M): ");
 
                                 String entradaConcentracion = scanner.nextLine().trim();
 
@@ -220,11 +222,9 @@ public class OrdinariodeQuimica {
 
                                 } else {
 
-                                    concentracion = Double.parseDouble(
-                                            entradaConcentracion);
+                                    concentracion = Double.parseDouble(entradaConcentracion);
 
-                                    if (!(concentracion > 0
-                                            && concentracion <= Double.MAX_VALUE)) {
+                                    if (!(concentracion > 0 && concentracion <= Double.MAX_VALUE)) {
 
                                         System.err.println("Error: ingrese una concentracion positiva y finita");
 
@@ -337,17 +337,13 @@ public class OrdinariodeQuimica {
 
                     System.out.println("");
 
-                    System.out.println("Electrodo 2: "
-                            + nombre2 + " (" + electrodo2 + ")");
+                    System.out.println("Electrodo 2: " + nombre2 + " (" + electrodo2 + ")");
 
-                    System.out.println("Concentracion: "
-                            + concentracion2 + " M");
+                    System.out.println("Concentracion: " + concentracion2 + " M");
 
-                    System.out.printf("Potencial estandar: %.4f V%n",
-                            estandar2);
+                    System.out.printf("Potencial estandar: %.4f V%n", estandar2);
 
-                    System.out.printf("Potencial final: %.4f V%n",
-                            potencial2);
+                    System.out.printf("Potencial final: %.4f V%n", potencial2);
 
                     // Determinamos el anodo y catodo
                     // Comparando los potenciales estandar
@@ -383,8 +379,7 @@ public class OrdinariodeQuimica {
                     // Imprimimos el anodo
                     System.out.println("------------------------------------");
 
-                    System.out.println("ANODO: "
-                            + nombreAnodo + " (" + anodo + ")");
+                    System.out.println("ANODO: " + nombreAnodo + " (" + anodo + ")");
 
                     System.out.println("En el anodo ocurre la OXIDACION");
                     System.out.println("Pierde electrones");
@@ -394,8 +389,7 @@ public class OrdinariodeQuimica {
                     // Imprimimos el catodo
                     System.out.println("------------------------------------");
 
-                    System.out.println("CATODO: "
-                            + nombreCatodo + " (" + catodo + ")");
+                    System.out.println("CATODO: " + nombreCatodo + " (" + catodo + ")");
 
                     System.out.println("En el catodo ocurre la REDUCCION");
                     System.out.println("Gana electrones");
@@ -403,6 +397,7 @@ public class OrdinariodeQuimica {
                     System.out.println(reaccionReduccion);
 
                     // Cambiamos el signo del anodo
+                    // Agregamos *(-1) para poder cambiar el signo
                     // Para obtener su potencial de oxidacion
                     double estandarOxidacion = estandarAnodo * (-1);
                     double potencialOxidacion = potencialAnodo * (-1);
@@ -417,11 +412,9 @@ public class OrdinariodeQuimica {
 
                     System.out.println("E°celda = E°catodo + E°anodo");
 
-                    System.out.printf("E°celda = %.4f + (%.4f)%n",
-                            estandarCatodo, estandarOxidacion);
+                    System.out.printf("E°celda = %.4f + (%.4f)%n", estandarCatodo, estandarOxidacion);
 
-                    System.out.printf("E°celda = %.4f V%n",
-                            voltajeEstandar);
+                    System.out.printf("E°celda = %.4f V%n", voltajeEstandar);
 
                     // Potencial final de celda
                     System.out.println("------------------------------------");
@@ -432,20 +425,16 @@ public class OrdinariodeQuimica {
                     System.out.printf("Ecelda = %.4f + (%.4f)%n",
                             potencialCatodo, potencialOxidacion);
 
-                    System.out.printf("VOLTAJE DE LA CELDA: %.4f V%n",
-                            voltaje);
+                    System.out.printf("VOLTAJE DE LA CELDA: %.4f V%n", voltaje);
 
-                    // Determinamos si la reaccion es espontanea
+                    // Determinamos si la reaccion es espontanea  o no
                     if (voltaje > 0) {
-
                         System.out.println("La reaccion es ESPONTANEA");
 
                     } else if (voltaje < 0) {
-
                         System.out.println("La reaccion NO ES ESPONTANEA");
 
                     } else {
-
                         System.out.println("La celda esta en equilibrio");
                     }
 
@@ -454,11 +443,9 @@ public class OrdinariodeQuimica {
                     double estandarCatodoInverso = estandarCatodo * (-1);
                     double potencialCatodoInverso = potencialCatodo * (-1);
 
-                    double voltajeEstandarInverso =
-                            estandarCatodoInverso + estandarAnodo;
+                    double voltajeEstandarInverso = estandarCatodoInverso + estandarAnodo;
 
-                    double voltajeInverso =
-                            potencialCatodoInverso + potencialAnodo;
+                    double voltajeInverso = potencialCatodoInverso + potencialAnodo;
 
                     System.out.println("------------------------------------");
                     System.out.println("=== POTENCIAL DE LA REACCION INVERSA ===");
@@ -466,22 +453,16 @@ public class OrdinariodeQuimica {
                     System.out.println("Anodo: " + nombreCatodo);
                     System.out.println("Catodo: " + nombreAnodo);
 
-                    System.out.printf("E°celda = %.4f + (%.4f)%n",
-                            estandarCatodoInverso, estandarAnodo);
+                    System.out.printf("E°celda = %.4f + (%.4f)%n", estandarCatodoInverso, estandarAnodo);
 
-                    System.out.printf("E°celda = %.4f V%n",
-                            voltajeEstandarInverso);
+                    System.out.printf("E°celda = %.4f V%n", voltajeEstandarInverso);
 
-                    System.out.printf("Ecelda = %.4f + (%.4f)%n",
-                            potencialCatodoInverso, potencialAnodo);
+                    System.out.printf("Ecelda = %.4f + (%.4f)%n", potencialCatodoInverso, potencialAnodo);
 
-                    System.out.printf("VOLTAJE INVERSO: %.4f V%n",
-                            voltajeInverso);
+                    System.out.printf("VOLTAJE INVERSO: %.4f V%n", voltajeInverso);
 
                     if (voltajeInverso > 0) {
-
                         System.out.println("La reaccion inversa es ESPONTANEA");
-
                     } else if (voltajeInverso < 0) {
 
                         System.out.println("La reaccion inversa NO ES ESPONTANEA");
@@ -511,7 +492,7 @@ public class OrdinariodeQuimica {
 
         HashMap<String, String> elemento = new HashMap<>();
 
-        elemento.put("simbolo", simbolo);
+       elemento.put("simbolo", simbolo);
         elemento.put("nombre", nombre);
         elemento.put("potencial", String.valueOf(potencial));
         elemento.put("electrones", String.valueOf(electrones));
